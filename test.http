@@ -1,0 +1,97 @@
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "name": "Admin",
+  "email": "admin@gmail.com",
+  "password": "admin123",
+  "role": "ADMIN"
+}
+
+###
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "name": "Student",
+  "email": "student@gmail.com",
+  "password": "student123",
+  "role": "STUDENT"
+}
+
+###
+POST http://localhost:8080/rooms/admin/add
+Authorization: Basic admin@gmail.com:admin123
+Content-Type: application/json
+
+{
+  "name": "Room A101",
+  "capacity": 6,
+  "currentOccupancy": 0
+}
+
+
+###
+POST http://localhost:8080/booking/student/book?roomId=1&userId=2&start=2026-02-12T10:00:00&end=2026-02-12T12:00:00
+Authorization: Basic student@gmail.com:student123
+
+###
+POST http://localhost:8080/booking/student/book?roomId=1&userId=2&start=2026-02-16T10:00:00&end=2026-02-16T12:00:00
+Authorization: Basic student@gmail.com:student123
+
+###
+POST http://localhost:8080/booking/student/checkin?bookingId=1
+Authorization: Basic student@gmail.com:student123
+
+###
+GET http://localhost:8080/booking/admin/peak-hours
+Authorization: Basic admin@gmail.com:admin123
+
+###
+GET http://localhost:8080/booking/admin/peak-hour
+Authorization: Basic admin@gmail.com:admin123
+
+
+### Register Admin
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "email": "admin@gmail.com",
+  "password": "admin123",
+  "role": "ADMIN"
+}
+
+###
+
+### Register Student
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "email": "student@gmail.com",
+  "password": "student123",
+  "role": "STUDENT"
+}
+
+### Add Room
+POST http://localhost:8080/rooms/admin/add
+Authorization: Basic admin@gmail.com:admin123
+Content-Type: application/json
+
+{
+  "name": "Room A101",
+  "capacity": 6,
+  "currentOccupancy": 0
+}
+
+### Add Room
+POST http://localhost:8080/rooms/admin/add
+Authorization: Basic admin@gmail.com:admin123
+Content-Type: application/json
+
+{
+  "name": "Room A102",
+  "capacity": 4,
+  "currentOccupancy": 0
+}
