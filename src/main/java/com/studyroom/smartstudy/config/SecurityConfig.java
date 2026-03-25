@@ -19,21 +19,11 @@ public class SecurityConfig {
 public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
     http
-        .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-        .csrf(csrf -> csrf.disable())
-
-        .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/register").permitAll()
-                .requestMatchers("/admin/**").hasRole("ADMIN")
-                .requestMatchers("/rooms/admin/**").hasRole("ADMIN")
-                .requestMatchers("/analytics/**").hasRole("STUDENT")
-                .requestMatchers("/student/**").hasRole("STUDENT")
-                .requestMatchers("/rooms/student/**").hasRole("STUDENT")
-                .requestMatchers("/booking/**").hasAnyRole("STUDENT","ADMIN")
-                .anyRequest().permitAll()
-        )
-
-        .httpBasic(httpBasic -> {});
+    .csrf(csrf -> csrf.disable())
+    .authorizeHttpRequests(auth -> auth
+        .anyRequest().permitAll()
+    )
+    .httpBasic(httpBasic -> {});
 
     return http.build();
 }
